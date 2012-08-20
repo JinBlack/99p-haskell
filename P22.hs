@@ -1,4 +1,4 @@
-range :: Int -> Int -> [Int]
-range x y	| x < y = x:(range (x+1) y)
+range :: (Enum a,Ord a) => a -> a -> [a]
+range x y	| x < y = x:(range (succ x) y)
 		| x==y = [x]
-		| otherwise = error "Indexes Error"
+		| x > y = x:(range (pred x) y)
